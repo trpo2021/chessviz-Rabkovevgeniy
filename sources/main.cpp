@@ -55,6 +55,7 @@ int main()
     while (!end_of_game) {
         num_move++;
         cin >> input;
+        cin >> input;
         if (input != "0-0-0" && input != "0-0") {
             switch (input[0]) {
             case 'K':
@@ -181,8 +182,8 @@ int main()
                 board[7][0] = None;
                 board[7][4] = None;
             } else {
-                board[0][2] = King_w;
-                board[0][3] = Rook_w;
+                board[0][2] = King_b;
+                board[0][3] = Rook_b;
                 board[0][0] = None;
                 board[0][4] = None;
             }
@@ -193,8 +194,8 @@ int main()
                 board[7][7] = None;
                 board[7][4] = None;
             } else {
-                board[0][2] = King_w;
-                board[0][3] = Rook_w;
+                board[0][2] = King_b;
+                board[0][3] = Rook_b;
                 board[0][0] = None;
                 board[0][4] = None;
             }

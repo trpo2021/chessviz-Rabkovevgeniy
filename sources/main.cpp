@@ -46,7 +46,7 @@ int main()
     //-------------------deshifrations-------------------------------
     int num_move = 0;
     bool end_of_game = 0;
-    TypePiece type_piece_for_muve;
+    TypePiece type_piece_for_move;
     int i1, j1, i2, j2;
     TypeMove type_move;
     Specifiers specifiers;
@@ -56,25 +56,33 @@ int main()
         num_move++;
         cin >> input;
         cin >> input;
+        try {
+            check_sintax_error(input);
+        } catch (string what_hapenned) {
+            cout << endl
+                 << "Error " << what_hapenned << endl
+                 << "in move " << num_move / 2 + 1 << ". " << input << endl;
+            return 1;
+        }
         if (input != "0-0-0" && input != "0-0") {
             switch (input[0]) {
             case 'K':
-                type_piece_for_muve = King;
+                type_piece_for_move = King;
                 break;
             case 'Q':
-                type_piece_for_muve = Queen;
+                type_piece_for_move = Queen;
                 break;
             case 'R':
-                type_piece_for_muve = Rook;
+                type_piece_for_move = Rook;
                 break;
             case 'B':
-                type_piece_for_muve = Bishop;
+                type_piece_for_move = Bishop;
                 break;
             case 'N':
-                type_piece_for_muve = Knight;
+                type_piece_for_move = Knight;
                 break;
             default:
-                type_piece_for_muve = Pawn;
+                type_piece_for_move = Pawn;
                 input.insert(0, "P");
                 break;
             }

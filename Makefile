@@ -1,5 +1,9 @@
 Chessviz.out: main.o ExceptionHandler.o Visualizer.o Consts.o
-	g++ -o Chessviz.out main.o ExceptionHandler.o Visualizer.o Consts.o 
+	g++ -o Chessviz.out main.o ExceptionHandler.o Visualizer.o Consts.o
+	rm main.o
+	rm ExceptionHandler.o
+	rm Visualizer.o
+	rm Consts.o
 
 main.o: sources/main.cpp
 	g++ -c sources/main.cpp

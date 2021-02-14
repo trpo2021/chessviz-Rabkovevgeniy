@@ -58,10 +58,10 @@ int main()
         cin >> input;
         try {
             check_sintax_error(input);
-        } catch (string what_hapenned) {
+        } catch (const char* what_hapenned) {
             cout << endl
-                 << "Error " << what_hapenned << endl
-                 << "in move " << num_move / 2 + 1 << ". " << input << endl;
+                 << "Error: " << what_hapenned << endl
+                 << "move: " << num_move / 2 + 1 << ". " << input << endl;
             return 1;
         }
         if (input != "0-0-0" && input != "0-0") {

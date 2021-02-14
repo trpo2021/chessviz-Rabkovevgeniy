@@ -22,22 +22,23 @@ bool check_sintax_error(std::string input)
                 if ((input[5] < '1' || input[5] > '8'))
                     throw "extracted simbol 1-8";
             }
-            if (input.length() < 5)
-                throw "notation too short";
-            if (input.length() > 6) {
-                if (input[6] != '#' && input[6] != '+' && input[6] != 'e'
-                    && input[6] != 'Q' && input[6] != 'R' && input[6] != 'B'
-                    && input[6] != 'N')
-                    throw "extracted # | + | e | Q | R | B | N";
-                else {
-                    if (input[6] == 'e' && input[3] != 'x')
-                        throw "e.p. move mast be 'take'";
-                    if ((input[6] == 'Q' || input[6] == 'R' || input[6] == 'B'
-                         || input[6] == 'N')
-                        && input[0] != 'P')
-                        throw "Only a pawn can transform";
-                }
-            }
         }
+    if (input.length() < 5)
+        throw "notation too short";
+    if (input.length() > 6) {
+        if (input[6] != '#' && input[6] != '+' && input[6] != 'e'
+            && input[6] != 'Q' && input[6] != 'R' && input[6] != 'B'
+            && input[6] != 'N')
+            throw "extracted # | + | e | Q | R | B | N";
+        else {
+            if (input[6] == 'e' && input[3] != 'x')
+                throw "e.p. move mast be 'take'";
+            if ((input[6] == 'Q' || input[6] == 'R' || input[6] == 'B'
+                 || input[6] == 'N')
+                && input[0] != 'P')
+                throw "Only a pawn can transform";
+        }
+    }
+
     return 1;
 }

@@ -7,6 +7,9 @@
 
 using namespace std;
 
+template <typename T>
+void Swap(T& a, T& b);
+
 int main()
 {
     Pieces board[8][8]; // life array
@@ -42,18 +45,17 @@ int main()
     cout << endl;
     //-------------------deshifrations-------------------------------
     int num_move = 0;
-    bool end_of_game = 1;
+    bool end_of_game = 0;
     TypePiece type_piece_for_muve;
     int i1, j1, i2, j2;
     TypeMove type_move;
     Specifiers specifiers;
     TypePiece type_piece_for_transformation;
 
-    while (end_of_game) {
+    while (!end_of_game) {
         num_move++;
         cin >> input;
-        if (input == "0-0-0" || input == "0-0") {
-        } else {
+        if (input != "0-0-0" && input != "0-0") {
             switch (input[0]) {
             case 'K':
                 type_piece_for_muve = King;
@@ -76,7 +78,7 @@ int main()
                 break;
             }
 
-            i1 = (int)input[2] - 49;
+            i1 = 7 - ((int)input[2] - 49);
             j1 = (int)input[1] - 97;
 
             switch (input[3]) {
@@ -88,7 +90,7 @@ int main()
                 break;
             }
 
-            i2 = (int)input[5] - 49;
+            i2 = 7 - ((int)input[5] - 49);
             j2 = (int)input[4] - 97;
 
             if (6 < input.length())
@@ -114,7 +116,7 @@ int main()
                     break;
                 case '#':
                     specifiers = Checkmate;
-                    end_of_game = 0;
+                    end_of_game = 1;
                     break;
                 case '+':
                     specifiers = Check;
@@ -124,5 +126,89 @@ int main()
                 specifiers = Ordinary;
         }
         //-------------------deshifrations-------------------------------
+        //-------------------manipulations-------------------------------
+        if (input != "0-0-0" && input != "0-0") {
+            if (type_move == QuietMove
+                && (specifiers == Ordinary || specifiers == Check
+                    || specifiers == Checkmate))
+                Swap(board[i1][j1], board[i2][j2]);
+            if (type_move == Take && specifiers != TakingOnThePass) {
+                Swap(board[i1][j1], board[i2][j2]);
+                board[i1][j1] = None;
+            }
+            if (type_move == Take && specifiers == TakingOnThePass) {
+                board[i2][j2] = board[i1][j1];
+                board[i1 - 1][j1] = None;
+            }
+            if (specifiers == Transformation) {
+                if (num_move % 2 == 1) {
+                    switch (type_piece_for_transformation) {
+                    case Queen:
+                        board[i2][j2] = Queen_w;
+                        break;
+                    case Rook:
+                        board[i2][j2] = Rook_w;
+                        break;
+                    case Bishop:
+                        board[i2][j2] = Bishop_w;
+                        break;
+                    case Knight:
+                        board[i2][j2] = Knight_w;
+                        break;
+                    }
+                } else {
+                    switch (type_piece_for_transformation) {
+                    case Queen:
+                        board[i2][j2] = Queen_b;
+                        break;
+                    case Rook:
+                        board[i2][j2] = Rook_b;
+                        break;
+                    case Bishop:
+                        board[i2][j2] = Bishop_b;
+                        break;
+                    case Knight:
+                        board[i2][j2] = Knight_b;
+                        break;
+                    }
+                }
+                board[i1][j1] = None;
+            }
+        } else if (input == "0-0-0") {
+            if (num_move % 2 == 1) {
+                board[7][2] = King_w;
+                board[7][3] = Rook_w;
+                board[7][0] = None;
+                board[7][4] = None;
+            } else {
+                board[0][2] = King_w;
+                board[0][3] = Rook_w;
+                board[0][0] = None;
+                board[0][4] = None;
+            }
+        } else {
+            if (num_move % 2 == 1) {
+                board[7][6] = King_w;
+                board[7][5] = Rook_w;
+                board[7][7] = None;
+                board[7][4] = None;
+            } else {
+                board[0][2] = King_w;
+                board[0][3] = Rook_w;
+                board[0][0] = None;
+                board[0][4] = None;
+            }
+        }
+        //-------------------manipulations-------------------------------
+        visualize_board(board);
+        cout << endl;
     }
+}
+
+template <typename T>
+void Swap(T& a, T& b)
+{
+    T temp = a;
+    a = b;
+    b = temp;
 }

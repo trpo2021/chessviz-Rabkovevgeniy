@@ -4,7 +4,7 @@
 
 char get_simbol_pieces(Pieces a);
 
-void visualize_board(Pieces** board)
+void visualize_board(Pieces board[][8])
 {
     for (int i = 0; i < 8; i++) {
         std::cout << 8 - i << " ";
@@ -13,7 +13,7 @@ void visualize_board(Pieces** board)
         }
         std::cout << std::endl;
     }
-    std::cout << "  a b c d e f g h";
+    std::cout << "  a b c d e f g h" << std::endl;
 }
 
 char get_simbol_pieces(Pieces a)

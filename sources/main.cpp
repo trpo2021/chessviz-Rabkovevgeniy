@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    Pieces board[8][8]{}; // life array
+    Pieces board[8][8]; // life array
     //------------------------------zapolnenie---------------------------
     board[0][0] = Rook_b;
     board[0][1] = Knight_b;
@@ -36,4 +36,6 @@ int main()
     board[7][6] = Knight_w;
     board[7][7] = Rook_w;
     //-----------------------------zapolnenie------------------------------
+
+    visualize_board(board);
 }

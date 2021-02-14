@@ -1,7 +1,7 @@
 #pragma once
 
 enum Pieces {
-    none,
+    None,
     Pawn_w,
     King_w,
     Queen_w,
@@ -13,5 +13,27 @@ enum Pieces {
     Queen_b,
     Bishop_b,
     Knight_b,
-    Rook_b,
+    Rook_b
+};
+
+enum TypePiece {
+    none,
+    Pawn,
+    King,
+    Queen,
+    Bishop,
+    Knight,
+    Rook,
+};
+enum TypeMove {
+    QuietMove,
+    Take,
+};
+
+enum Specifiers {
+    Ordinary,
+    Checkmate,
+    Check,
+    TakingOnThePass,
+    Transformation,
 };

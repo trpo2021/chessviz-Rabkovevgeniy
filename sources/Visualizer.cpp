@@ -19,7 +19,7 @@ void visualize_board(Pieces board[][8])
 char get_simbol_pieces(Pieces a)
 {
     switch (a) {
-    case none:
+    case None:
         return ' ';
         break;
     case Pawn_w:
@@ -59,4 +59,5 @@ char get_simbol_pieces(Pieces a)
         return 'r';
         break;
     }
+    return '!';
 }

@@ -2,9 +2,7 @@ Chessviz.out: main.o ExceptionHandler.o Visualizer.o
 	g++ -Wall -Werror -o Chessviz.out main.o ExceptionHandler.o Visualizer.o
 
 clean:
-	rm main.o
-	rm ExceptionHandler.o
-	rm Visualizer.o
+	rm *.o
 
 
 main.o: sources/main.cpp

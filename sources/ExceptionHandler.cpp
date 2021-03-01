@@ -1,6 +1,4 @@
 #include "../headers/ExceptionHandler.h"
-#include "../headers/Consts.h"
-#include <string>
 
 bool check_sintax_error(std::string input)
 {

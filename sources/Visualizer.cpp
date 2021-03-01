@@ -1,6 +1,4 @@
 #include "../headers/Visualizer.h"
-#include "../headers/Consts.h"
-#include <iostream>
 
 char get_simbol_pieces(Pieces a)
 {

@@ -1,5 +1,5 @@
 #include "../headers/ExceptionHandler.h"
-#include "Consts.cpp"
+#include "../headers/Consts.h"
 #include <string>
 
 bool check_sintax_error(std::string input)

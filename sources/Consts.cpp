@@ -1,4 +1,4 @@
-#pragma once
+#include "../headers/Consts.h"
 
 enum Pieces {
     None,

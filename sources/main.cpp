@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 
+#include "../headers/Consts.h"
 #include "../headers/ExceptionHandler.h"
 #include "../headers/Visualizer.h"
-#include "Consts.cpp"
 
 using namespace std;
 
@@ -53,9 +53,11 @@ int main()
     TypePiece type_piece_for_transformation;
 
     while (!end_of_game) {
-        num_move++;
-        cin >> input;
-        cin >> input;
+        if (type_piece_for_move == none || type_piece_for_move != none) {
+            num_move++;
+            cin >> input;
+            cin >> input;
+        }
         try {
             check_sintax_error(input);
         } catch (const char* what_hapenned) {
@@ -164,6 +166,8 @@ int main()
                     case Knight:
                         board[i2][j2] = Knight_w;
                         break;
+                    default:
+                        break;
                     }
                 } else {
                     switch (type_piece_for_transformation) {
@@ -178,6 +182,8 @@ int main()
                         break;
                     case Knight:
                         board[i2][j2] = Knight_b;
+                        break;
+                    default:
                         break;
                     }
                 }

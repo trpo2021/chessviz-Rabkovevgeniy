@@ -1,20 +1,6 @@
 #include "../headers/Visualizer.h"
-#include "Consts.cpp"
+#include "../headers/Consts.h"
 #include <iostream>
-
-char get_simbol_pieces(Pieces a);
-
-void visualize_board(Pieces board[][8])
-{
-    for (int i = 0; i < 8; i++) {
-        std::cout << 8 - i << " ";
-        for (int j = 0; j < 8; j++) {
-            std::cout << get_simbol_pieces(board[i][j]) << " ";
-        }
-        std::cout << std::endl;
-    }
-    std::cout << "  a b c d e f g h" << std::endl;
-}
 
 char get_simbol_pieces(Pieces a)
 {
@@ -60,4 +46,16 @@ char get_simbol_pieces(Pieces a)
         break;
     }
     return '!';
+}
+
+void visualize_board(Pieces board[][8])
+{
+    for (int i = 0; i < 8; i++) {
+        std::cout << 8 - i << " ";
+        for (int j = 0; j < 8; j++) {
+            std::cout << get_simbol_pieces(board[i][j]) << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << "  a b c d e f g h" << std::endl;
 }

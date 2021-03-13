@@ -1,9 +1,9 @@
 #include <iostream>
 #include <string>
 
-#include "../headers/Consts.h"
-#include "../headers/ExceptionHandler.h"
-#include "../headers/Visualizer.h"
+#include <Consts.h>
+#include <ExceptionHandler.h>
+#include <Visualizer.h>
 
 using namespace std;
 

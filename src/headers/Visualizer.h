@@ -1,4 +1,5 @@
-#include "Consts.h"
+#pragma once
+#include <Consts.h>
 #include <iostream>
 
 char get_simbol_pieces(Pieces a);

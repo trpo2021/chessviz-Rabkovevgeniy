@@ -1,4 +1,4 @@
-#include "../headers/ExceptionHandler.h"
+#include <ExceptionHandler.h>
 
 bool check_sintax_error(std::string input)
 {

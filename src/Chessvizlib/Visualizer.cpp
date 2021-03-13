@@ -1,4 +1,4 @@
-#include "../headers/Visualizer.h"
+#include <Visualizer.h>
 
 char get_simbol_pieces(Pieces a)
 {

@@ -1,33 +1,25 @@
-PathObj = ./obj/
-PathSrc = ./src/
-PathToChessvizlib = Chessvizlib/
+PObj = obj/
+PBin = bin/
+PSrc = src/
+Plib = $(PSrc)/Chessvizlib/
 CC = g++
-PathHeaders = $(PathSrc)headers
-CFlags = -Wall -Wextra -Werror -I $(PathHeaders)
-ForMake = -MMD
+PHeaders = src/headers
+CFlags = -Wall -Wextra -Werror -I $(PHeaders) -MMD
 
-Chessviz.out: $(PathObj)main.o $(PathObj)chessvizlib.a
-	$(CC) $(CFlags) -o bin/$@ $^
+all:$(PBin)Chessviz.out
 
-$(PathObj)chessvizlib.a: $(PathObj)ExceptionHandler.o\
-	$(PathObj)Visualizer.o
+$(PBin)Chessviz.out: $(PObj)main.o $(PObj)chessvizlib.a
+	$(CC) $(CFlags) -o $@ $^
+
+$(PObj)chessvizlib.a: $(PObj)ChessBoard.o $(PObj)Piece.o
 	ar rcs $@ $^
 
-$(PathObj)ExceptionHandler.o: $(PathSrc)$(PathToChessvizlib)ExceptionHandler.cpp
-	$(CC) $(CFlags) $(ForMake) -c $< -o $@
+$(PObj)%.o: $(PSrc)%.cpp
+	$(CC) $(CFlags) -c $< -o $@
 
-
-$(PathObj)Visualizer.o: $(PathSrc)$(PathToChessvizlib)Visualizer.cpp
-	$(CC) $(CFlags) $(ForMake) -c $< -o $@
-
-$(PathObj)main.o: $(PathSrc)main.cpp
-	$(CC) $(CFlags) $(ForMake) -c $< -o $@
-
-.PHONY: clean
+.PHONY: clean all
 clean:
-	rm -r $(PathObj)*.[oda] -f
-	rm -r $(PathSrc)headers/*.h.* -f
-	rm -r $(PathHeaders)$(PathToChessvizlib)/*.h.* -f
-	rm -r bin/*.out -f
+	rm -rf $(PObj)*.*
+	rm -rf $(PBin)*.*
 
--include $(PathObj)Visualizer.d $(PathObj)ExceptionHandler.d $(PathObj)main.d
+-include $(PObj)main.d $(PObj)ChessBoard.d $(PObj)Pieces.d

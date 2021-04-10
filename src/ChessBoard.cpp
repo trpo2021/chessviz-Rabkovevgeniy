@@ -187,6 +187,8 @@ void ChessBoard::do_chess_notation(string chess_notation)
     if (game_is_ended)
         throw "Game was ended";
     Step step(chess_notation);
+    if (board[step.x1][step.y1] == nullptr)
+        throw "Pice on the board, does not fit the notation ";
     if (board[step.x1][step.y1]->get_type_of_piece()
         != step.type_piece_for_move)
         throw "Pice on the board, does not fit the notation ";

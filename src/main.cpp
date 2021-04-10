@@ -25,7 +25,7 @@ int main()
     cout << endl;
     Board.visualize_board();
     cout << endl;
-    int i = 0;
+    int i = -1;
     while (notations.size() != 0) {
         i++;
         try {

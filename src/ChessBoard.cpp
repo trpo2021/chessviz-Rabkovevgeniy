@@ -10,6 +10,7 @@ void Swap(T& a, T& b)
 
 ChessBoard::ChessBoard()
 {
+    num_move = 0;
     board[0][0] = new Piece(Rook, Black);
     board[0][1] = new Piece(Knight, Black);
     board[0][2] = new Piece(Bishop, Black);
@@ -57,12 +58,8 @@ ChessBoard::~ChessBoard()
             delete board[i][j];
 }
 
-int ChessBoard::num_move = 0;
-
 ChessBoard::Step::Step(string chess_notation)
 {
-    ChessBoard::num_move++;
-
     sintax_is_correct(chess_notation);
 
     if (chess_notation != "0-0-0" && chess_notation != "0-0") {
@@ -186,6 +183,7 @@ void ChessBoard::do_chess_notation(string chess_notation)
 {
     if (game_is_ended)
         throw "Game was ended";
+    num_move++;
     Step step(chess_notation);
     if (board[step.x1][step.y1] == nullptr)
         throw "Pice on the board, does not fit the notation ";

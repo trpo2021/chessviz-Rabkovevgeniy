@@ -1,0 +1,24 @@
+name: Build
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+
+      - name: Check codestyle
+        run: git ls-files *.{c,cpp,h} | xargs clang-format -i && git diff --exit-code
+
+      - name: Build makefile 
+        run: cmake -S . -B build/
+      
+      - name: Build application
+        run: cmake --build build/
+      
+      - name: test
+        run: ./build/test_list

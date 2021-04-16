@@ -13,4 +13,4 @@ jobs:
         run: git ls-files *.{c,cpp,h} | xargs clang-format -i && git diff --exit-code
 
       - name: Build application
-        run: cmake -S . -B build/ && cd build/ && cmake --build .
+        run: cmake -S . -B build/  && cmake --build build/.

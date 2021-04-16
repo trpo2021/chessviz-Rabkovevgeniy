@@ -19,7 +19,7 @@ public:
 private:
     Piece* board[8][8];
     bool game_is_ended;
-    static int num_move;
+    int num_move;
 
     class Step {
     public:

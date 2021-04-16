@@ -64,8 +64,39 @@ TEST(Piece, get_simbol_of_piece)
 TEST(Piece, get_type_of_piece)
 {
     // Arrange
+    Piece white_queen{Queen, White};
+    TypePieces type;
 
     // Act
+    type = white_queen.get_type_of_piece();
 
     // Assert
+    EXPECT_EQ(type, Queen);
+}
+
+TEST(Piece, set_type_of_piece)
+{
+    // Arrange
+    Piece white_queen{Queen, White};
+    TypePieces type;
+
+    // Act
+    white_queen.set_type_of_piece(King);
+    type = white_queen.get_type_of_piece();
+
+    // Assert
+    EXPECT_EQ(type, King);
+}
+
+TEST(Piece, set_color_of_piece)
+{
+    // Arrange
+    Piece white_queen{Queen, White};
+    ColorOfPieces color;
+
+    // Act
+    color = white_queen.get_color_of_piece();
+
+    // Assert
+    EXPECT_EQ(color, White);
 }

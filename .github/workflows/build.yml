@@ -19,3 +19,6 @@ jobs:
       
       - name: Build application
         run: cmake --build build/
+      
+      - name: test
+        run: ./build/test_list

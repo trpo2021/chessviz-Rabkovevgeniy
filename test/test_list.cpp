@@ -100,3 +100,23 @@ TEST(Piece, set_color_of_piece)
     // Assert
     EXPECT_EQ(color, White);
 }
+
+TEST(ChessBoard, sintax_is_correct_and_do_chess_notation)
+{
+    // Arrange
+    ChessBoard board;
+
+    // Act
+
+    // notation have not meaning
+    ASSERT_ANY_THROW(board.do_chess_notation("sdf"));
+
+    // notation describes a non-existent cell
+    ASSERT_ANY_THROW(board.do_chess_notation("e9-e4"));
+
+    // notation describes a non-existent cell
+    ASSERT_ANY_THROW(board.do_chess_notation("m4-e4"));
+
+    // notation describes a unreal step
+    ASSERT_ANY_THROW(board.do_chess_notation("b3-e4"));
+}

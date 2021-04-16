@@ -8,9 +8,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: 'true'
 
       - name: Check codestyle
         run: git ls-files *.{c,cpp,h} | xargs clang-format -i && git diff --exit-code
 
+      - name: Build makefile 
+        run: cmake -S . -B build/
+      
       - name: Build application
-        run: cmake -S . -B build/  && cmake --build build/.
+        run: cmake --build build/
